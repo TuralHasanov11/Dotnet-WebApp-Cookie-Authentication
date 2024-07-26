@@ -1,0 +1,19 @@
+﻿@model RolesViewModel
+@{
+    ViewData["Title"] = "Roles";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<ul>
+    @foreach (var role in Model.Roles)
+    {
+        <li>@role</li>
+    }
+</ul>
+
+@if ((await AuthorizationService.AuthorizeAsync(User, Permissions.RoleCreate)).Succeeded)
+{
+    <a asp-controller="Authorization" asp-action="RoleCreate">Create Role</a>
+}
+
