@@ -38,6 +38,9 @@ builder.Services.AddAuthentication(options =>
         options.SlidingExpiration = true;
         options.AccessDeniedPath = "/";
         options.LoginPath = "/Authentication/Login/";
+        options.Cookie.SameSite = SameSiteMode.Strict;
+        options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+        options.Cookie.HttpOnly = true;
     });
 
 builder.Services.AddAuthorizationBuilder();
